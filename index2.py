@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 from algorithms_2d import gradient_descent, conjugate_gradient_descent, newton_algorithm, levenberg_marquadt
 from algorithms_zero_order import exhaustive_search, gauss_search, nelder_mead
-from formulas import least_squares_lin, least_squares_lin_gradient_norm, linear_approximation, rational_approximation, NOISY_DATA, X_ES, lin_to_approximate
+from formulas import least_squares_lin, linear_approximation, rational_approximation, NOISY_DATA, X_ES, lin_to_approximate
 
 PRECISION = 0.001
 START = (0.0, 0.0)
@@ -40,7 +40,7 @@ print(f"Newton Algorithm: result={answ[0]} a={answ[1][0]}; b={answ[1][1]};functi
 plt.plot(X_ES, [linear_approximation(x, answ[1][0], answ[1][1]) for x in X_ES], label='Newton Algorithm', linewidth=2)
 
 answ = levenberg_marquadt(lin_to_approximate, START, END, PRECISION)
-print(f"Levenberg-Marquadt: a={answ[1][0]}; b={answ[1][1]};function_calculation={answ[2]}; iterations={answ[3]}")
+print(f"Levenberg-Marquadt: a={answ[1][0]}; b={answ[1][1]};function_calculation={answ[2]}; jacobian_calculations={answ[3]}")
 plt.plot(X_ES, [linear_approximation(x, answ[1][0], answ[1][1]) for x in X_ES], label='Levenberg-Marquadt', linewidth=1)
 
 plt.xlabel('X-value')

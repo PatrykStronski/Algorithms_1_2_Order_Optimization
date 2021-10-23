@@ -43,22 +43,6 @@ def least_squares_lin(point: (float, float)) -> float:
 def least_squares_rat(point: (float, float)) -> float:
     return least_squares_custom(rational_approximation, point[0], point[1])
 
-def least_squares_lin_der_a(point: (float, float)) -> float:
-    sum = 0
-    for k in range(0,100):
-        y = NOISY_DATA[k]
-        x = X_ES[k]
-        sum += 2* point[0] * x ** 2 + 2 * x * point[1] - 2 * y * x 
-    return sum
-
-def least_squares_lin_der_b(point: (float, float)) -> float:
-    sum = 0
-    for k in range(0,100):
-        y = NOISY_DATA[k]
-        x = X_ES[k]
-        sum += 2 * point[0] * x + 2 * point[1] - 2 * y
-    return sum
-
 def least_squares_lin_gradient_norm(point: (float, float)) -> float:
     return math.sqrt(least_squares_lin_der_a(point) ** 2 + least_squares_lin_der_b(point) ** 2)
 

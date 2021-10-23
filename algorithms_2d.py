@@ -31,7 +31,7 @@ def gradient_descent(func: Callable, start: (float, float), end: (float, float),
         res_curr = least_squares_custom(func, curr_a, curr_b)
         learning_rate_a, learning_rate_b = calculate_learning_rate(func, (curr_a, curr_b), grad, point_pre)
 
-    return (res_curr, (curr_a, curr_b), iter_nmb + 1, iter_nmb)
+    return (res_pre, point_pre, iter_nmb * 2, iter_nmb)
 
 def conjugate_gradient_descent(func: Callable, start: (float, float), end: (float, float), precision: float) -> (float, (float, float), int, int):
     x0 = [start[0], start[1]]
@@ -49,4 +49,4 @@ def levenberg_marquadt(func: Callable, start: (float, float), end: (float, float
     x0 = [start[0], start[1]]
     ans = least_squares(func, x0, method='lm', ftol=precision, xtol=precision)
     val = sum(func(ans.x))
-    return (val, ans.x, ans.nfev, ans.nfev)
+    return (val, ans.x, ans.nfev, ans.njev)

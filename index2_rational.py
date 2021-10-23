@@ -40,7 +40,7 @@ print(f"Newton Algorithm: result={answ[0]} a={answ[1][0]}; b={answ[1][1]};functi
 plt.plot(X_ES, [rational_approximation(x, answ[1][0], answ[1][1]) for x in X_ES], label='Newton Algorithm', linewidth=2)
 
 answ = levenberg_marquadt(rat_to_approximate, START, END, PRECISION)
-print(f"Levenberg-Marquadt: result={answ[0]} a={answ[1][0]}; b={answ[1][1]};function_calculation={answ[2]}; iterations={answ[3]}")
+print(f"Levenberg-Marquadt: a={answ[1][0]}; b={answ[1][1]};function_calculation={answ[2]}; jacobian_calculations={answ[3]}")
 plt.plot(X_ES, [rational_approximation(x, answ[1][0], answ[1][1]) for x in X_ES], label='Levenberg-Marquadt', linewidth=1)
 
 plt.xlabel('X-value')
